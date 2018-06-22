@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux';
 
 import { View, Text } from 'react-native';
 
 class ProfilePage extends Component {
     render() {
         return (
-            <View>
-                <Icon name="ios-trash" size={30} color="#900" />
+            <View>                
                 <Text>Profile Page</Text>
+                <Text>{this.props.sum}</Text>
             </View>
         );
     }
 }
 
-export default ProfilePage;
+
+const mapStateToProps = state => {
+    return {
+      sum: state.main.sum,
+    }
+  }
+
+export default connect(mapStateToProps)(ProfilePage);
